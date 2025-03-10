@@ -1,21 +1,24 @@
-name: Install Tools & Dependencies
-description: Installs pnpm, Node.js & package dependencies
+name: Format Files
 
-runs:
-  using: composite
-  steps:
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        version: 9
-        run_install: false
+on:
+  push:
+    branches:
+      - main
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        cache: pnpm
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: pnpm install
-      shell: bash
+      - name: Install tools & dependencies
+        uses: ./.github/actions/install
+
+      - name: Format files
+        run: pnpm format
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: Format files"

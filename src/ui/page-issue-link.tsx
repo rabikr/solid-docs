@@ -10,7 +10,7 @@ export const PageIssueLink: Component = () => {
 	const i18n = useI18n();
 
 	const [mounted, setMounted] = createSignal(false);
-	
+
 	onMount(() => setMounted(true));
 
 	const srcPath = createMemo(() => {

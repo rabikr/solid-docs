@@ -5,6 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
+import prettier from "eslint-plugin-prettier";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,11 +23,12 @@ export default [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:solid/typescript",
-		"plugin:mdx/recommended",
+		"plugin:mdx/recommended"
 	),
 	{
 		plugins: {
 			"@typescript-eslint": typescriptEslint,
+			prettier,
 		},
 
 		languageOptions: {
@@ -49,6 +51,12 @@ export default [
 					destructuredArrayIgnorePattern: "^_",
 					varsIgnorePattern: "^_",
 					ignoreRestSiblings: true,
+				},
+			],
+			"prettier/prettier": [
+				"error",
+				{
+					proseWrap: "never",
 				},
 			],
 		},

@@ -125,15 +125,14 @@
 
 /* pace from solidbase */
 :root {
-	--bprogress-color: theme('colors.blue.500') !important;
+	--bprogress-color: theme("colors.blue.500") !important;
 }
 
 /* twoslash from solidbase */
 html {
-	--twoslash-cursor: #24292E;
+	--twoslash-cursor: #24292e;
 }
 
 html[data-theme="dark"] {
-	--twoslash-cursor: #BABED8;
+	--twoslash-cursor: #babed8;
 }
-
